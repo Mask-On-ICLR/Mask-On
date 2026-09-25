@@ -1,0 +1,10 @@
+# Dependencies for the WeDLM runtime.
+transformers==4.56.1
+tokenizers==0.22.0
+huggingface-hub==0.36.2
+accelerate==1.10.1
+datasets==3.6.0
+einops==0.8.1
+numpy==1.26.4
+PyYAML==6.0.2
+safetensors==0.6.2

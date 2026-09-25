@@ -1,0 +1,20 @@
+{
+  "models": {
+    "fast": {"anchor": ["Qwen/Qwen2.5-7B-Instruct", "a09a35458c702b33eeacc393d103063234e8bc28"], "endpoint": ["Efficient-Large-Model/Fast_dLLM_v2_7B", "0661abf5f9f0ee338970d091052a26c8efa51974"], "dtype": "bfloat16", "system": "You are a helpful assistant.", "stop_ids": [151643,151645], "block_size":32, "mask_id":151665},
+    "wedlm": {"anchor": ["Qwen/Qwen3-8B", "b968826d9c46dd6066d109eabc6255188de91218"], "endpoint": ["tencent/WeDLM-8B-Instruct", "c1e0373ec7e11bc27321a548ea54ea9728b0d9c0"], "dtype": "bfloat16", "system": null, "stop_ids": [151643,151645], "block_size":1, "mask_id":151665},
+    "sdar": {"anchor": ["Qwen/Qwen3-8B", "b968826d9c46dd6066d109eabc6255188de91218"], "endpoint": ["JetLM/SDAR-8B-Chat", "ac4528d2c076b04e02a03e6f430efa4385331ce8"], "dtype": "float16", "system": null, "stop_ids": [151643,151645], "block_size":4, "mask_id":151669},
+    "llada": {"anchor": ["inclusionAI/Ling-mini-2.0", "920c3fd9916e3d5e543fc4f609e827cad8a32983"], "endpoint": ["inclusionAI/LLaDA2.0-mini", "dad945cac317da394b390f82c7b40691d8a881ed"], "dtype": "bfloat16", "system": null, "stop_ids": [156892], "block_size":32, "mask_id":156895}
+  },
+  "datasets": {
+    "gsm8k": {"repo_id":"openai/gsm8k", "revision":"740312add88f781978c0658806c59bc2815b9866", "subset":"main", "split":"test", "count":1319},
+    "mbpp": {"repo_id":"google-research-datasets/mbpp", "revision":"4bb6404fdc6cacfda99d4ac4205087b89d32030c", "subset":"full", "split":"test", "count":500},
+    "arc_challenge": {"repo_id":"allenai/ai2_arc", "revision":"210d026faf9955653af8916fad021475a3f00453", "subset":"ARC-Challenge", "split":"test", "count":1172},
+    "ifeval": {"repo_id":"google/IFEval", "revision":"966cd89545d6b6acfd7638bc708b98261ca58e84", "subset":null, "split":"train", "count":541}
+  },
+  "calibration": {"repo_id":"nvidia/Nemotron-Post-Training-Dataset-v2", "revision":"5c89e01dd720ae0f4058445ed49c5fb68a03c76e", "domains":["code","math","stem","chat"], "fit":32, "validation":8},
+  "native_sources": {
+    "sdar": ["https://github.com/JetAstra/SDAR.git", "4c2749ba103448f45520e8411533710a1e66574d"],
+    "wedlm": ["https://github.com/tencent/WeDLM.git", "8d3f66b18f6a00467f8f87d3ec1f091b1da9204e"]
+  },
+  "evaluation": {"shots":0, "max_new_tokens":1024, "seed":20260909, "batch_size":1, "choice_parser":"explicit_final_or_unambiguous_leading_label_v1"}
+}

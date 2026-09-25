@@ -1,0 +1,9 @@
+# Shared runtime dependencies; scripts/install.sh installs PyTorch.
+accelerate==1.10.1
+datasets==3.6.0
+einops==0.8.1
+huggingface-hub==0.36.2
+numpy==1.26.4
+PyYAML==6.0.2
+safetensors==0.6.2
+transformers==4.53.1

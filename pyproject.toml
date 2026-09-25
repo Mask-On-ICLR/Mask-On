@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mask-on"
+version = "0.1.0"
+description = "Mode-selectable AR/diffusion reconstruction and evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["torch>=2.7", "numpy>=1.26", "safetensors>=0.6", "PyYAML>=6", "huggingface-hub>=0.34", "datasets>=3.6", "transformers>=4.53,<5", "accelerate>=1.10", "einops>=0.8"]
+
+[project.scripts]
+mask-on = "mask_on.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mask_on = ["catalog.json"]

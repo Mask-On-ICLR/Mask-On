@@ -1,0 +1,5 @@
+# Dependencies for IFEval scoring.
+lm-eval==0.4.8
+langdetect==1.0.9
+immutabledict==4.2.1
+nltk==3.9.1

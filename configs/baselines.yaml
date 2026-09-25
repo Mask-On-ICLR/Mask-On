@@ -1,0 +1,13 @@
+# Single nonzero delta: diffusion endpoint minus the stated AR anchor.
+task_arithmetic: {beta: 0.4, vocabulary: full}
+ties: {retained_fraction: 0.2, trim: global_absolute_threshold_include_ties, beta: 1.0, vocabulary: full}
+dare: {drop: 0.5, beta: 0.5, seed: 0, vocabulary: full}
+aim: {underlying: task_arithmetic, beta: 0.4, omega: 0.4, input_statistic: mean_absolute_normalized_by_module_max}
+t_switch: {alpha: 0.5, scale: tensor_RMS_retained_delta, support: separate_positive_negative_quotas, vocabulary: endpoint}
+mask_on: {alpha_grid: [0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95], selection: fit_error_only, scale: nonnegative_full_projection_output_LS, domains: equal, vocabulary: endpoint, other_tensors: tensor_weight_LS}
+adamerging: {steps: 500, learning_rate: 0.001, initial_coefficient: 0.3, validation_interval: 25, selection: minimum_validation_loss}
+adamerging_plus_plus: {parent: adamerging, basis: global_TIES_retention_0.2}
+regmean: {non_diagonal_scale: 0.9, relative_loading: 0.0, missing_statistics: error}
+representation_surgery: {mode_specific_adapter: true, native_hook_required: true, stateless_weight_merge: false}
+bitdelta: {optimizer: Adam, steps: 200, batch_size: 4, learning_rate: 0.0001, length: 128, selection: final_step}
+delta_come: {rank_bits: [8,3,2], group_size: 128, damping: 0.01, calibration_length: 2048}
